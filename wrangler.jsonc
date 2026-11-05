@@ -3,7 +3,6 @@
   "name": "proxylab",
   "compatibility_date": "2026-11-05",
   "assets": {
-    "directory": "./public",
-    "binding": "ASSETS"
+    "directory": "./public"
   }
 }
