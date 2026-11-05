@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d18">
+  <meta name="description" content="Find the right proxy for your needs. Compare proxy providers, understand pricing and explore tools before you buy.">
+  <title>ProxyLab — Find the right proxy. Test before you buy.</title>
+  <style>
+    :root {
+      --bg:#080d18;
+      --panel:#101827;
+      --panel2:#131f31;
+      --line:#24334a;
+      --text:#f1f5fc;
+      --muted:#9aaac0;
+      --blue:#438cff;
+      --cyan:#45d5ed;
+      --green:#43d6a0;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      line-height:1.6
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .announcement{
+      text-align:center;padding:9px 15px;background:#101d31;
+      border-bottom:1px solid var(--line);font-size:12px;color:#b8c9df
+    }
+    .announcement span{color:var(--cyan)}
+    header{
+      position:sticky;top:0;z-index:20;background:#080d18ed;
+      backdrop-filter:blur(14px);border-bottom:1px solid #1b293c
+    }
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{display:flex;align-items:center;gap:11px;font-size:21px;font-weight:800;letter-spacing:-.8px}
+    .logo-mark{
+      width:35px;height:35px;border-radius:11px;display:grid;place-items:center;
+      background:linear-gradient(135deg,#438cff,#42d6e9);color:#06111e;font-weight:950
+    }
+    .logo span:last-child{color:var(--cyan)}
+    .nav-links{display:flex;align-items:center;gap:27px;color:var(--muted);font-size:13px}
+    .nav-links a:hover{color:white}
+    .nav-cta,.button{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      background:var(--blue);color:white;padding:11px 17px;border-radius:10px;
+      font-weight:700;font-size:13px;border:1px solid transparent;cursor:pointer;
+      transition:.2s
+    }
+    .nav-cta:hover,.button:hover{background:#67a4ff;transform:translateY(-1px)}
+    .button.secondary{background:#111c2d;border-color:#30435e;color:#e3edfa}
+    .button.secondary:hover{border-color:var(--blue)}
+    .hero{padding:95px 0 75px;position:relative;overflow:hidden}
+    .hero:before{
+      content:"";position:absolute;width:650px;height:500px;right:-150px;top:-180px;
+      background:radial-gradient(ellipse,#174d8a38,transparent 68%);pointer-events:none
+    }
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:7px 11px;
+      border:1px solid #29476b;border-radius:30px;color:#9bc9ff;
+      background:#10223a;font-size:11px;font-weight:750;letter-spacing:1px;text-transform:uppercase
+    }
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+    h1{font-size:clamp(42px,5.4vw,68px);line-height:1.06;letter-spacing:-3px;margin:22px 0}
+    .gradient{background:linear-gradient(100deg,#64a8ff,#54dce8);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-copy{font-size:17px;color:var(--muted);max-width:570px;line-height:1.8}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:27px;color:#8294ad;font-size:12px}
+    .trust span:before{content:"✓";color:var(--green);margin-right:7px}
+    .visual{
+      position:relative;border:1px solid #263b58;border-radius:23px;
+      padding:24px;background:linear-gradient(145deg,#14233a,#0d1524);
+      box-shadow:0 30px 90px #0008
+    }
+    .visual-top{display:flex;justify-content:space-between;align-items:center;color:#a8bad1;font-size:12px;margin-bottom:22px}
+    .live{color:var(--green);font-size:11px}
+    .visual-title{font-size:19px;font-weight:750;margin-bottom:5px}
+    .visual-sub{color:var(--muted);font-size:12px}
+    .metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+    .metric{background:#0b1423;border:1px solid #253750;border-radius:13px;padding:17px}
+    .metric small{color:#8fa2bc;font-size:11px}
+    .metric strong{display:block;font-size:22px;margin-top:5px}
+    .metric em{font-size:11px;color:var(--green);font-style:normal}
+    .visual-bar{height:7px;border-radius:20px;background:#26364e;margin-top:10px;overflow:hidden}
+    .visual-bar i{display:block;height:100%;width:78%;background:linear-gradient(90deg,#438cff,#48d9e8);border-radius:20px}
+    .section{padding:76px 0}
+    .section.alt{background:#0b1220;border-top:1px solid #18263a;border-bottom:1px solid #18263a}
+    .section-heading{max-width:690px;margin-bottom:34px}
+    .kicker{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}
+    h2{font-size:clamp(29px,4vw,41px);letter-spacing:-1.5px;line-height:1.2;margin:10px 0}
+    .section-heading p,.muted{color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .card{
+      background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+      padding:24px;transition:.2s
+    }
+    .card:hover{transform:translateY(-4px);border-color:#42658f}
+    .card-icon{
+      width:43px;height:43px;border-radius:12px;background:#142d4c;
+      color:#75b5ff;display:grid;place-items:center;font-size:20px;margin-bottom:18px
+    }
+    .card h3{font-size:17px;margin:0 0 8px}
+    .card p{font-size:13px;color:var(--muted);margin:0 0 17px}
+    .card-link{color:#83baff;font-size:12px;font-weight:750}
+    .tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .tool{
+      background:linear-gradient(145deg,#14233a,#0d1727);
+      border:1px solid #2b405d;border-radius:20px;padding:27px
+    }
+    .tool h3{font-size:21px;margin:8px 0}
+    .tool p{font-size:13px;color:var(--muted)}
+    .tool-label{font-size:11px;color:var(--cyan);font-weight:800;letter-spacing:1px;text-transform:uppercase}
+    .field{margin:17px 0}
+    .field label{display:block;font-size:12px;color:#b6c6dc;margin-bottom:7px}
+    .field input,.field select{
+      width:100%;padding:12px 13px;background:#091321;border:1px solid #34465e;
+      color:white;border-radius:9px;outline:none
+    }
+    .field input:focus,.field select:focus{border-color:var(--blue)}
+    .result{
+      padding:16px;background:#0a1726;border:1px solid #2b4965;border-radius:12px;
+      margin-top:16px
+    }
+    .result small{color:var(--muted)}
+    .result strong{display:block;font-size:29px;color:var(--green);margin-top:4px}
+    .fine{font-size:11px!important;color:#8496ae!important}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .step-number{font-size:28px;font-weight:850;color:#4d9aff}
+    .step h3{font-size:16px;margin:7px 0}
+    .step p{font-size:13px;color:var(--muted)}
+    .cta{
+      padding:45px;border-radius:22px;border:1px solid #31547a;
+      background:radial-gradient(ellipse at top right,#174b7d80,transparent 60%),#101c2e;
+      display:flex;justify-content:space-between;align-items:center;gap:25px
+    }
+    .cta h2{font-size:30px;margin:0 0 8px}
+    .cta p{color:var(--muted);margin:0;font-size:13px}
+    footer{padding:40px 0 25px;border-top:1px solid #1b293c}
+    .footer-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;color:#9aaac0;font-size:12px}
+    .disclosure{font-size:11px;color:#71839c;max-width:720px;margin-top:25px}
+    .copyright{font-size:11px;color:#64748b;margin-top:25px}
+    .mobile-menu{display:none}
+    @media(max-width:800px){
+      .hero-grid{grid-template-columns:1fr;gap:35px}
+      .hero{padding:65px 0 55px}
+      .cards{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .tool-grid{grid-template-columns:1fr}
+      .cta{align-items:flex-start;flex-direction:column;padding:30px}
+    }
+    @media(max-width:540px){
+      .container{width:min(100% - 30px,1160px)}
+      .cards,.steps{grid-template-columns:1fr}
+      h1{letter-spacing:-2px}
+      .metric-grid{gap:8px}
+      .visual{padding:17px}
+      .section{padding:57px 0}
+      .nav-cta{padding:9px 11px;font-size:11px}
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Independent proxy research. <span>Smarter decisions start here.</span></div>
+
+  <header>
+    <nav class="container">
+      <a class="logo" href="#"><span class="logo-mark">P</span>Proxy<span>Lab</span></a>
+      <div class="nav-links">
+        <a href="#compare">Compare</a>
+        <a href="#tools">Free tools</a>
+        <a href="#guides">Guides</a>
+        <a href="#about">About</a>
+      </div>
+      <a class="nav-cta" href="#compare">Explore providers ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Proxy intelligence platform</div>
+          <h1>Find the right proxy.<br><span class="gradient">Test before you buy.</span></h1>
+          <p class="hero-copy">
+            Compare proxy providers, understand real costs and discover the right
+            connection for your workflow. Make informed decisions without wasting money.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#compare">Compare proxy types <span>→</span></a>
+            <a class="button secondary" href="#tools">Explore free tools</a>
+          </div>
+          <div class="trust">
+            <span>Independent research</span>
+            <span>Transparent comparisons</span>
+            <span>Free resources</span>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="visual-top"><span>PROXYLAB / INTELLIGENCE</span><span class="live">● PLATFORM PREVIEW</span></div>
+          <div class="visual-title">Make every proxy decision count.</div>
+          <div class="visual-sub">Understand the options before choosing a provider.</div>
+          <div class="metric-grid">
+            <div class="metric"><small>Proxy categories</small><strong>03</strong><em>Explore your options</em></div>
+            <div class="metric"><small>Cost calculator</small><strong>Free</strong><em>Estimate your spend</em></div>
+            <div class="metric"><small>Provider research</small><strong>Independent</strong><em>Compare with context</em></div>
+            <div class="metric"><small>Buying decisions</small><strong>Smarter</strong><em>Know before you buy</em></div>
+          </div>
+          <div class="visual-bar"><i></i></div>
+          <div class="visual-top" style="margin:10px 0 0"><span>Built for clarity</span><span>ProxyLab</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="compare">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Choose your connection</div>
+          <h2>Not all proxies are created equal.</h2>
+          <p>Understand the main proxy categories and what each one is designed to do.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">⌂</div>
+            <h3>Residential proxies</h3>
+            <p>IP addresses associated with residential internet providers. Often selected for location-sensitive research and web data workflows.</p>
+            <a class="card-link" href="#guides">Explore residential proxies →</a>
+          </article>
+          <article class="card">
+            <div class="card-icon">▦</div>
+            <h3>Datacenter proxies</h3>
+            <p>IP addresses hosted in data centers. Often chosen for speed, predictable infrastructure and cost-conscious workloads.</p>
+            <a class="card-link" href="#guides">Explore datacenter proxies →</a>
+          </article>
+          <article class="card">
+            <div class="card-icon">◇</div>
+            <h3>ISP proxies</h3>
+            <p>Addresses announced by internet service providers but hosted on server infrastructure. A different balance of characteristics.</p>
+            <a class="card-link" href="#guides">Explore ISP proxies →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Free ProxyLab tools</div>
+          <h2>Know what you are paying for.</h2>
+          <p>Start with a cost estimate. More diagnostic tools will be added as they are properly tested.</p>
+        </div>
+        <div class="tool-grid">
+          <div class="tool">
+            <div class="tool-label">Free tool / 01</div>
+            <h3>Proxy cost calculator</h3>
+            <p>Estimate your monthly proxy budget based on usage and price per gigabyte.</p>
+            <div class="field">
+              <label for="usage">Estimated monthly data usage (GB)</label>
+              <input id="usage" type="number" min="0" step="0.1" value="20">
+            </div>
+            <div class="field">
+              <label for="price">Provider price per GB (USD)</label>
+              <input id="price" type="number" min="0" step="0.01" value="5">
+            </div>
+            <div class="field">
+              <label for="currency">Display currency</label>
+              <select id="currency">
+                <option value="USD">USD — US Dollar</option>
+                <option value="EUR">EUR — Euro</option>
+                <option value="CLP">CLP — Chilean Peso</option>
+              </select>
+            </div>
+            <div class="result">
+              <small>Estimated monthly cost</small>
+              <strong id="total">$100.00</strong>
+              <small id="annual">Estimated annual cost: $1,200.00</small>
+            </div>
+            <p class="fine">Estimates only. Exchange rates and provider fees are not included.</p>
+          </div>
+          <div class="tool">
+            <div class="tool-label">Free tool / 02</div>
+            <h3>Proxy connection checker</h3>
+            <p>We are developing a reliable diagnostic tool. Browser-only checks cannot verify every proxy property or bypass provider restrictions.</p>
+            <div class="result">
+              <small>Tool status</small>
+              <strong style="font-size:20px;color:#70b6ff">In development</strong>
+              <small>We will publish it after its tests are validated.</small>
+            </div>
+            <p class="fine">Never enter proxy passwords or private credentials into an untrusted website.</p>
+            <a class="button secondary" href="mailto:hello@proxylab.pages.dev?subject=ProxyLab%20tool%20updates">Request tool updates</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="guides">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Learn before you buy</div>
+          <h2>Proxy knowledge, without the noise.</h2>
+          <p>Practical educational resources to help you understand proxy technology and choose responsibly.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">01</div>
+            <h3>What is a proxy server?</h3>
+            <p>Learn how proxy connections work, what they change and what they do not guarantee.</p>
+            <a class="card-link" href="mailto:hello@proxylab.pages.dev?subject=Proxy%20guide">Guide coming soon →</a>
+          </article>
+          <article class="card">
+            <div class="card-icon">02</div>
+            <h3>Residential vs. datacenter</h3>
+            <p>Understand the differences in infrastructure, use cases and pricing models.</p>
+            <a class="card-link" href="mailto:hello@proxylab.pages.dev?subject=Proxy%20guide">Guide coming soon →</a>
+          </article>
+          <article class="card">
+            <div class="card-icon">03</div>
+            <h3>How to evaluate a provider</h3>
+            <p>Learn which details to compare: location coverage, pricing, support and terms.</p>
+            <a class="card-link" href="mailto:hello@proxylab.pages.dev?subject=Proxy%20guide">Guide coming soon →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <div class="kicker">The ProxyLab approach</div>
+            <h2>Clarity first. Connections second.</h2>
+            <p>Our goal is to make proxy research easier through useful tools and transparent information.</p>
+          </div>
+          <a class="button" href="mailto:hello@proxylab.pages.dev?subject=Hello%20ProxyLab">Contact ProxyLab ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <a class="logo" href="#"><span class="logo-mark">P</span>Proxy<span>Lab</span></a>
+        <div class="footer-links">
+          <a href="#compare">Compare</a>
+          <a href="#tools">Tools</a>
+          <a href="#guides">Guides</a>
+          <a href="#about">About</a>
+          <a href="mailto:hello@proxylab.pages.dev">Contact</a>
+        </div>
+      </div>
+      <p class="disclosure">
+        Affiliate disclosure: ProxyLab may earn a commission when visitors purchase
+        through certain links. This does not increase the price you pay. We aim to
+        identify commercial relationships clearly and provide useful, independent
+        information. Provider availability, features and prices can change; verify
+        details directly with each provider before purchasing.
+      </p>
+      <div class="copyright">© 2026 ProxyLab. Independent proxy research and tools.</div>
+    </div>
+  </footer>
+
+  <script>
+    const usage = document.getElementById("usage");
+    const price = document.getElementById("price");
+    const currency = document.getElementById("currency");
+    const total = document.getElementById("total");
+    const annual = document.getElementById("annual");
+
+    function calculate() {
+      const gb = Math.max(0, Number(usage.value) || 0);
+      const rate = Math.max(0, Number(price.value) || 0);
+      const monthly = gb * rate;
+      const code = currency.value;
+      const locale = code === "CLP" ? "es-CL" : "en-US";
+      const formatter = new Intl.NumberFormat(locale, {
+        style: "currency",
+        currency: code,
+        maximumFractionDigits: code === "CLP" ? 0 : 2
+      });
+      total.textContent = formatter.format(monthly);
+      annual.textContent = "Estimated annual cost: " + formatter.format(monthly * 12);
+    }
+
+    [usage, price, currency].forEach(element => {
+      element.addEventListener("input", calculate);
+      element.addEventListener("change", calculate);
+    });
+    calculate();
+  </script>
+</body>
+</html>
